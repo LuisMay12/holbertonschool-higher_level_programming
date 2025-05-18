@@ -6,6 +6,7 @@ casts floats to integers, and raises a TypeError
 for invalid input types.
 """
 
+
 def add_integer(a, b=98):
     """
     Add two integers or floats (which are casted to integers).
