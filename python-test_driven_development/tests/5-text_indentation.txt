@@ -1,0 +1,19 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello. World? Yes: indeed.")
+Hello.
+<BLANKLINE>
+World?
+<BLANKLINE>
+Yes:
+<BLANKLINE>
+indeed.
+<BLANKLINE>
+>>> text_indentation("No punctuation here")
+No punctuation here
+>>> text_indentation("")
+>>> text_indentation(42)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation("Ends with colon:")
+Ends with colon:
+<BLANKLINE>
