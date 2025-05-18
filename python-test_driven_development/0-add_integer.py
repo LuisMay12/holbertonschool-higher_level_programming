@@ -31,8 +31,10 @@ def add_integer(a, b=98):
         >>> add_integer(100.3, -2)
         98
     """
-    if not isinstance(a, (int, float)):
-        raise TypeError("a must be an integer")
-    if not isinstance(b, (int, float)):
-        raise TypeError("b must be an integer")
+    for value, name in ((a, "a"), (b, "b")):
+        if not isinstance(value, (int, float)):
+            raise TypeError(f"{name} must be an integer")
+        # NaN check: only NaN != NaN is True
+        if value != value or value == float('inf') or value == float('-inf'):
+            raise TypeError(f"{name} must be an integer")
     return int(a) + int(b)

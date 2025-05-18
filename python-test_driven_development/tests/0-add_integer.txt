@@ -23,3 +23,15 @@ TypeError: a must be an integer
 >>> add_integer(5, float('nan'))
 Traceback (most recent call last):
 TypeError: b must be an integer
+>>> add_integer(float('inf'), 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(5, float('-inf'))
+Traceback (most recent call last):
+TypeError: b must be an integer
+>>> add_integer(1e1000, 1)
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(1, 1e1000)
+Traceback (most recent call last):
+TypeError: b must be an integer
