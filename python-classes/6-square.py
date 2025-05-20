@@ -22,7 +22,8 @@ class Square:
             position (tuple): Tuple of 2 positive integers for offset.
 
         Raises:
-            TypeError: If size is not an integer or position is not a valid tuple.
+            TypeError: If size is not an integer
+            or position is not a valid tuple.
             ValueError: If size is negative.
         """
         self.size = size
