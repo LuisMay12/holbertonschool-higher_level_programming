@@ -45,8 +45,22 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Prints the square using '#' characters."""
-        print(self.__str__())
+        """Prints the square using '#' characters, respecting position.
+
+        If size is 0, prints an empty line. Horizontal and vertical offsets
+        are applied using spaces and newlines respectively.
+        """
+        if self.__size == 0:
+            print()
+            return
+
+        # Apply vertical offset
+        for _ in range(self.__position[1]):
+            print()
+
+        # Print square with horizontal offset
+        for _ in range(self.__size):
+            print(" " * self.__position[0] + "#" * self.__size)
 
     def __str__(self):
         """Returns the square as a string for printing."""
