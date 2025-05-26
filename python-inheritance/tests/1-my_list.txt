@@ -1,16 +1,26 @@
-tests/1-my_list.txt
 """
 Doctest for the MyList class.
 
 >>> MyList = __import__('1-my_list').MyList
+
+# Test 1: Unsorted list including a negative number
 >>> my_list = MyList()
 >>> my_list.append(10)
+>>> my_list.append(-2)
+>>> my_list.append(4)
 >>> my_list.append(3)
->>> my_list.append(7)
->>> my_list.append(1)
 >>> my_list
-[10, 3, 7, 1]
+[10, -2, 4, 3]
 >>> my_list.print_sorted()
-[1, 3, 7, 10]
+[-2, 3, 4, 10]
 >>> my_list
-[10, 3, 7, 1]
+[10, -2, 4, 3]
+
+# Test 2: Empty list
+>>> empty_list = MyList()
+>>> empty_list
+[]
+>>> empty_list.print_sorted()
+[]
+>>> empty_list
+[]
