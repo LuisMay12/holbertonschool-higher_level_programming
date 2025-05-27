@@ -74,3 +74,14 @@ ValueError: age must be greater than 0
 Traceback (most recent call last):
 ...
 ValueError: age must be greater than 0
+
+# Test: integer_validator() called without second argument
+>>> bg.integer_validator("age")
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
