@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Displays all values in the states table where name matches the argument"""
+"""Displays all values in the states table where name matches user input"""
 
 import MySQLdb
 import sys
@@ -9,10 +9,8 @@ def main():
     """
     Connects to the database and fetches states where name matches user input
     """
-    username, password = sys.argv[1], sys.argv[2]
-    db_name, state_name = sys.argv[3], sys.argv[4]
+    username, password, db_name, state_name = sys.argv[1:5]
 
-    # Connect to MySQL server
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -23,11 +21,11 @@ def main():
 
     cursor = db.cursor()
 
-    # Use format to build the query with user input
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    escaped_name = state_name.replace("'", "''")
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(escaped_name)
+
     cursor.execute(query)
 
-    # Fetch and display results
     for row in cursor.fetchall():
         print(row)
 
