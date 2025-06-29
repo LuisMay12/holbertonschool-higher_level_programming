@@ -23,9 +23,9 @@ def main():
 
     cursor = db.cursor()
 
-    # Use parameterized query to prevent SQL injection
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(query, (state_name,))
+    # Use format to build the query with user input
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    cursor.execute(query)
 
     # Fetch and display results
     for row in cursor.fetchall():
