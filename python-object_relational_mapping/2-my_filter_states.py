@@ -9,7 +9,8 @@ def main():
     """
     Connects to the database and fetches states where name matches user input
     """
-    username, password, db_name, state_name = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    username, password = sys.argv[1], sys.argv[2]
+    db_name, state_name = sys.argv[3], sys.argv[4]
 
     # Connect to MySQL server
     db = MySQLdb.connect(
@@ -22,9 +23,9 @@ def main():
 
     cursor = db.cursor()
 
-    # Use format to build the query with user input
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
-    cursor.execute(query)
+    # Use parameterized query to prevent SQL injection
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
 
     # Fetch and display results
     for row in cursor.fetchall():
