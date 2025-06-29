@@ -21,10 +21,9 @@ def main():
 
     cursor = db.cursor()
 
-    escaped_name = state_name.replace("'", "''")
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(escaped_name)
-
-    cursor.execute(query)
+    # Use parameterized query to avoid SQL injection
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
 
     for row in cursor.fetchall():
         print(row)
